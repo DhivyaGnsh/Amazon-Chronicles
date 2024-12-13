@@ -1,0 +1,20 @@
+Calculate the Average Closing Price
+import pandas as pd
+average_close = data['Close'].mean()
+print(f"Average Closing Price: {average_close}")
+
+  Analyze Monthly Average Closing Prices
+data['Date'] = pd.to_datetime(data['Date'])
+monthly_avg_close = data.groupby(data['Date'].dt.to_period('M'))['Close'].mean()
+print("Monthly Average Closing Prices:")
+print(monthly_avg_close)
+
+ Day with the Highest Trading Volume
+highest_volume_row = data[data['Volume'] == data['Volume'].max()]
+print("Date with Highest Trading Volume:")
+print(highest_volume_row[['Date', 'Volume']])
+
+Calculate the Daily Price Range
+data['Price_Range'] = data['High'] - data['Low']
+print("Daily Price Range:")
+print(data[['Date', 'Price_Range']])
